@@ -1,4 +1,4 @@
-# Migração da Antiga Wiki para a Nova
+# Migração dos Dados da Antiga Wiki Para a Nova
 
 Nesse repositório é descrito o processo usado para migração do conteúdo da [_antiga Wiki do câmpus SJ](https://wiki.sj.ifsc.edu.br/wiki/index.php/P%C3%A1gina_principal) para a [ nova Wiki](https://wiki.sj.ifsc.edu.br/wiki/index.php/P%C3%A1gina_principal) 
 
