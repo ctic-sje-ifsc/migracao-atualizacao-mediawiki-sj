@@ -26,3 +26,4 @@ Abaixo tabela com os antigos plugins, cujas instalações foram necessárias na 
 | [LDAP Authentication Plugin](https://www.mediawiki.org/wiki/Extension:LDAP_Authentication)  | autenticação LDAP                                 | versão 1.2p   | versão 2.1.0 (2014-03-28)          |
 | [LockDown](https://www.mediawiki.org/wiki/Extension:Lockdown)                    | restringe acesso para um grupo                    |       -       |                  -                 |
 | [Validator](https://www.mediawiki.org/wiki/Extension:Validator)                   | processador de parâmetros para definição          | versão 0.4.13 | versão 2.0.5 (2016-04-04)          |
+| [Quiz](https://www.mediawiki.org/wiki/Extension:Quiz)  | permite inserção de quiz na wiki                                 | -   | 1.2.0 (2013-08-13)          |
