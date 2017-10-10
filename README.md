@@ -10,19 +10,19 @@ Abaixo tabela com os antigos plugins, cuja instalação foram necessárias na no
 
 | NOME                        | INFO                                              | WIKI ANTIGA   | WIKI NOVA                          |
 |-----------------------------|---------------------------------------------------|---------------|------------------------------------|
-| Semantic MediaWiki          | documentação                                      | versão 1.5.6  | versão 2.5.4                       |
+| [Semantic MediaWiki](https://www.semantic-mediawiki.org/wiki/Help:User_manual)          | melhorar estrutura e organização                                      | versão 1.5.6  | versão 2.5.4                       |
 | Semantic Project Management | junto com semantic mediawiki, exportar projetos   | versão 1.5    | DESATIVADA                         |
-| Collection                  | criar livros                                      | versão 1.4    | versão 1.7.0 (2014-04-18)          |
-| Cite                        | auxílio para citações                             |       -       | já vem com a versão nova  da wiki   |
-| EmbedVideo                  | inserir vídeo na wiki com link (youtube)          | versão 1.0    | versão 2.7.0 (2017-05-08)          |
+| [Collection](https://www.mediawiki.org/wiki/Extension:Collection)                  | criar livros                                      | versão 1.4    | versão 1.7.0 (2014-04-18)          |
+| [Cite](https://www.mediawiki.org/wiki/Extension:Cite)                        | auxílio para citações                             |       -       | já vem com a versão nova  da wiki   |
+| [EmbedVideo](https://www.mediawiki.org/wiki/Extension:EmbedVideo)                  | inserir vídeo na wiki com link (youtube)          | versão 1.0    | versão 2.7.0 (2017-05-08)          |
 | GeSHiCodeTag                | highlight de textos dentro da wiki                | Versão 1.65   | DESATIVADA, [opção nova](https://www.mediawiki.org/wiki/Extension:SyntaxHighlight)  |
 | Google Calendar             | exibir calendario google na wiki                  |       -       | DESATIVADA, [widget google calendar](https://www.mediawikiwidgets.org/Google_Calendar) |
-| GoogleDocTag                | adiciona tag pra inserir google doc               | versão 0.4.0  | versão 0.4 (2014-03-31)            |
-| ParserFunctions             | melhora o analisador (parser) com funções lógicas | Versão 1.4.0  | versão 1.6.0 (2014-03-28)          |
-| Tooltip                     | acrescenta marcas (tooltips) ao texto             | versão 0.6.0  | versão 0.6.0                       |
-| Widgets                     | permite adicionar widgets                         | Versão 1.0    | versão 1.3.0 (agosto 2017)         |
+| [GoogleDocTag](https://www.mediawiki.org/wiki/Extension:GoogleDocTag)                | adiciona tag pra inserir google doc               | versão 0.4.0  | versão 0.4 (2014-03-31)            |
+| [ParserFunctions](https://www.mediawiki.org/wiki/Extension:ParserFunctions)             | melhora o analisador (parser) com funções lógicas | Versão 1.4.0  | versão 1.6.0 (2014-03-28)          |
+| [Tooltip](https://www.mediawiki.org/wiki/Extension:Tooltip)                     | acrescenta marcas (tooltips) ao texto             | versão 0.6.0  | versão 0.6.0                       |
+| [Widgets](https://www.mediawiki.org/wiki/Extension:Widgets)                     | permite adicionar widgets                         | Versão 1.0    | versão 1.3.0 (agosto 2017)         |
 | OggHandler                  | manipulador para arquivos Ogg Theora e Vorbis     |       -       | ARQUIVADA, [nova opção](https://www.mediawiki.org/wiki/Extension:TimedMediaHandler)              |
 | Google Maps Extension       | criar mapas na wiki                               | versão 0.9.4  | ARQUIVADA, [nova opção](https://www.mediawiki.org/wiki/Extension:Maps)              |
-| LDAP Authentication Plugin  | autenticação LDAP                                 | versão 1.2p   | versão 2.1.0 (2014-03-28)          |
-| LockDown                    | restringe acesso para um grupo                    |       -       |                  -                 |
-| Validator                   | processador de parâmetros para definição          | versão 0.4.13 | versão 2.0.5 (2016-04-04)          |
+| [LDAP Authentication Plugin](https://www.mediawiki.org/wiki/Extension:LDAP_Authentication)  | autenticação LDAP                                 | versão 1.2p   | versão 2.1.0 (2014-03-28)          |
+| [LockDown](https://www.mediawiki.org/wiki/Extension:Lockdown)                    | restringe acesso para um grupo                    |       -       |                  -                 |
+| [Validator](https://www.mediawiki.org/wiki/Extension:Validator)                   | processador de parâmetros para definição          | versão 0.4.13 | versão 2.0.5 (2016-04-04)          |
