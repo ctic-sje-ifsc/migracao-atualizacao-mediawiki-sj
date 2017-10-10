@@ -6,7 +6,7 @@ A antiga wiki encontrava-se na versão 1.16.0 do software open source [MediaWiki
 A migração do conteúdo foi feita para a versão mais recente (1.29.1).
 
 
-Abaixo tabela com os antigos plugins, cuja instalação foram necessárias na nova versão da Wiki:
+Abaixo tabela com os antigos plugins, cujas instalações foram necessárias na nova versão da Wiki:
 
 | NOME                        | INFO                                              | WIKI ANTIGA   | WIKI NOVA                          |
 |-----------------------------|---------------------------------------------------|---------------|------------------------------------|
