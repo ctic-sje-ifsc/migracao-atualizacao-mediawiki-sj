@@ -1,6 +1,6 @@
 # Migração dos dados mediawiki versão 1.16.0 para versão mais recente (1.29.1)
 
-Nesse repositório é descrito o processo usado para migração do conteúdo da [antiga Wiki do câmpus SJ](https://wiki.sj.ifsc.edu.br/wiki/index.php/P%C3%A1gina_principal) para a [ nova Wiki](https://cicd.sj.ifsc.edu.br/index.php/P%C3%A1gina_principal). 
+Nesse repositório é descrito o processo usado para migração do conteúdo da [antiga Wiki do IFSC câmpus SJ](https://wiki.sj.ifsc.edu.br/wiki/index.php/P%C3%A1gina_principal) para uma [ versão atualizada da mediawiki](https://cicd.sj.ifsc.edu.br/index.php/P%C3%A1gina_principal). 
 
 A antiga wiki encontrava-se na versão 1.16.0 do software open source [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki).
 A migração do conteúdo foi feita para a versão mais recente (1.29.1).
