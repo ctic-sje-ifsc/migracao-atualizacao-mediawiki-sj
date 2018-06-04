@@ -6,6 +6,9 @@ A antiga wiki encontrava-se na versão 1.16.0 do software open source [MediaWiki
 A migração do conteúdo foi feita para a versão mais recente (1.30.0).
 
 
+
+## Lista de Antigos Plugins
+
 Abaixo, tabela com os antigos plugins, cujas instalações foram necessárias na nova versão da Wiki:
 
 | NOME                        | INFO                                              | WIKI ANTIGA   | WIKI NOVA                          |
@@ -27,3 +30,8 @@ Abaixo, tabela com os antigos plugins, cujas instalações foram necessárias na
 | [LockDown](https://www.mediawiki.org/wiki/Extension:Lockdown)                    | restringe acesso para um grupo                    |       -       |                  -                 |
 | [Validator](https://www.mediawiki.org/wiki/Extension:Validator)                   | processador de parâmetros para definição          | versão 0.4.13 | versão 2.0.5 (2016-04-04)          |
 | [Quiz](https://www.mediawiki.org/wiki/Extension:Quiz)  | permite inserção de quiz na wiki                                 | -   | 1.2.0 (2013-08-13)          |
+
+
+## Imagem bitnami e Problemas para mudança de idioma
+
+## Instalação dos novos plugins na mediawiki 1.30
