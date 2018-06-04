@@ -34,4 +34,7 @@ Abaixo, tabela com os antigos plugins, cujas instalações foram necessárias na
 
 ## Imagem bitnami e Problemas para mudança de idioma
 
+A documentação relacionada a implementação da imagem em nosso kubernetes pode ser encontrada dentro do projeto servicos_kubernetes, com o nome de [mediawiki_att](https://github.com/ctic-sje-ifsc/servicos_kubernetes/tree/master/srv/mediawiki_att)
+
+
 ## Instalação dos novos plugins na mediawiki 1.30
