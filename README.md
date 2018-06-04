@@ -1,12 +1,12 @@
-# Migração dos Dados da Antiga Wiki Para a Nova
+# Migração dos Dados da wiki.sj.ifsc.edu.br Para a Nova Versão da Mediawiki
 
-Nesse repositório é descrito o processo usado para migração do conteúdo da [antiga Wiki do câmpus SJ](https://wiki.sj.ifsc.edu.br/wiki/index.php/P%C3%A1gina_principal) para a [ nova Wiki](https://wiki.sj.ifsc.edu.br/wiki/index.php/P%C3%A1gina_principal). 
+Nesse repositório é descrito o processo usado para migração do conteúdo da [antiga Wiki do câmpus SJ](https://wiki.sj.ifsc.edu.br/wiki/index.php/P%C3%A1gina_principal) para a [ nova Wiki](https://cicd.sj.ifsc.edu.br/index.php/P%C3%A1gina_principal). 
 
 A antiga wiki encontrava-se na versão 1.16.0 do software open source [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki).
-A migração do conteúdo foi feita para a versão mais recente (1.29.1).
+A migração do conteúdo foi feita para a versão mais recente (1.30.0).
 
 
-Abaixo tabela com os antigos plugins, cujas instalações foram necessárias na nova versão da Wiki:
+Abaixo, tabela com os antigos plugins, cujas instalações foram necessárias na nova versão da Wiki:
 
 | NOME                        | INFO                                              | WIKI ANTIGA   | WIKI NOVA                          |
 |-----------------------------|---------------------------------------------------|---------------|------------------------------------|
