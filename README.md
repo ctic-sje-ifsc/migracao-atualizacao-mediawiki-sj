@@ -53,7 +53,30 @@ Ao editar o arquivo LocalSettings.php com intuito de mudar o idioma da mediwiki 
 
 ```
 
-O livenessProbe citado acima é usado pelo kubelet para checar (a cada intervalo de tempo configurado) se o pod está funcionando corretamente, acessando a página descrita na linha `path: /index.php`. Ao mudar o idioma da mediawiki de inglês para português, a página /index.php passa a ser /index.php/Página_principal, fazendo com que o livenessProbre reiniciasse o pod por não conseguir acesso a página.
+O 'livenessProbe' citado acima é usado pelo kubelet para checar (a cada intervalo de tempo configurado) se o pod está funcionando corretamente, acessando a página descrita na linha `path: /index.php`. Ao mudar o idioma da mediawiki de inglês para português, a página /index.php passa a ser /index.php/Página_principal, fazendo com que o livenessProbre reiniciasse o pod por não conseguir acesso a página.
 
+Para resolver o problema, editamos o arquivo deployment.yaml de forma a mudar o path descrito no livenessProbe para um arquivo dentro da pasta images. 
+
+```
+"livenessProbe": {
+              "httpGet": {
+                "path": "/images/Logoifsc.png",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "initialDelaySeconds": 120,
+              "timeoutSeconds": 1,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/images/Logoifsc.png",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+```
 
 ## Instalação dos novos plugins na mediawiki 1.30
+
