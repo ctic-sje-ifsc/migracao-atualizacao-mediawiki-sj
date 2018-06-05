@@ -58,7 +58,7 @@ O 'livenessProbe' citado acima é usado pelo kubelet para checar (a cada interva
 Para resolver o problema, editamos o arquivo deployment.yaml de forma a mudar o path descrito no livenessProbe para um arquivo dentro da pasta images. 
 
 ```
-"livenessProbe": {
+           "livenessProbe": {
               "httpGet": {
                 "path": "/images/Logoifsc.png",
                 "port": "http",
