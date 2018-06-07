@@ -1,12 +1,18 @@
-# Migração dos dados mediawiki versão 1.16.0 para versão mais recente (1.29.1)
 
-Nesse repositório é descrito o processo usado para migração do conteúdo da [antiga Wiki do IFSC câmpus SJ](https://wiki.sj.ifsc.edu.br/wiki/index.php/P%C3%A1gina_principal) para uma [ versão atualizada da mediawiki](https://cicd.sj.ifsc.edu.br/index.php/P%C3%A1gina_principal). 
+# Migração dos Dados da wiki.sj.ifsc.edu.br Para a Nova Versão da Mediawiki
+
+Nesse repositório é descrito o processo usado para migração do conteúdo da [antiga Wiki do câmpus SJ](https://wiki.sj.ifsc.edu.br/wiki/index.php/P%C3%A1gina_principal) para a [ nova Wiki](https://cicd.sj.ifsc.edu.br/index.php/P%C3%A1gina_principal). 
+
+
 
 A antiga wiki encontrava-se na versão 1.16.0 do software open source [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki).
-A migração do conteúdo foi feita para a versão mais recente (1.29.1).
+A migração do conteúdo foi feita para a versão mais recente (1.30.0).
 
 
-Abaixo tabela com os antigos plugins, cujas instalações foram necessárias na nova versão da Wiki:
+
+## Lista de Antigos Plugins
+
+Abaixo, tabela com os antigos plugins, cujas instalações foram necessárias na nova versão da Wiki:
 
 | NOME                        | INFO                                              | WIKI ANTIGA   | WIKI NOVA                          |
 |-----------------------------|---------------------------------------------------|---------------|------------------------------------|
@@ -26,3 +32,53 @@ Abaixo tabela com os antigos plugins, cujas instalações foram necessárias na 
 | [LockDown](https://www.mediawiki.org/wiki/Extension:Lockdown)                    | restringe acesso para um grupo                    |       -       |                  -                 |
 | [Validator](https://www.mediawiki.org/wiki/Extension:Validator)                   | processador de parâmetros para definição          | versão 0.4.13 | versão 2.0.5 (2016-04-04)          |
 | [Quiz](https://www.mediawiki.org/wiki/Extension:Quiz)  | permite inserção de quiz na wiki                                 | -   | 1.2.0 (2013-08-13)          |
+
+
+## Kubernetes chart mediawiki e Problemas para mudança de idioma
+
+A documentação relacionada a implementação da imagem em nosso kubernetes pode ser encontrada dentro do projeto servicos_kubernetes, com o nome de [mediawiki_att](https://github.com/ctic-sje-ifsc/servicos_kubernetes/tree/master/srv/mediawiki_att)
+
+Ao editar o arquivo LocalSettings.php com intuito de mudar o idioma da mediwiki de "en" para "pt-br" na linha `$wgLanguageCode = "pt-br";`, o pod do kubernetes tornava-se inacessível e ficava reiniciando infinitamente. O motivo, como descobrimos, está atrelado ao trecho a seguir do arquivo [deployment.yaml](https://github.com/kubernetes/charts/blob/master/stable/mediawiki/templates/deployment.yaml):
+
+``` 
+        livenessProbe:
+          httpGet:
+            path: /index.php
+            port: http
+          initialDelaySeconds: 120
+        readinessProbe:
+          httpGet:
+            path: /index.php
+            port: http
+          initialDelaySeconds: 30
+        resources:
+
+```
+
+O 'livenessProbe' citado acima é usado pelo kubelet para checar (a cada intervalo de tempo configurado) se o pod está funcionando corretamente, acessando a página descrita na linha `path: /index.php`. Ao mudar o idioma da mediawiki de inglês para português, a página /index.php passa a ser /index.php/Página_principal, fazendo com que o livenessProbre reiniciasse o pod por não conseguir acesso a página.
+
+Para resolver o problema, editamos o arquivo deployment.yaml de forma a mudar o path descrito no livenessProbe para um arquivo dentro da pasta images. 
+
+```
+           "livenessProbe": {
+              "httpGet": {
+                "path": "/images/Logoifsc.png",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+              "initialDelaySeconds": 120,
+              "timeoutSeconds": 1,
+              "periodSeconds": 10,
+              "successThreshold": 1,
+              "failureThreshold": 3
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/images/Logoifsc.png",
+                "port": "http",
+                "scheme": "HTTP"
+              },
+```
+
+## Instalação dos novos plugins na mediawiki 1.30
+
