@@ -86,6 +86,7 @@ Para resolver o problema, editamos o arquivo deployment.yaml de forma a mudar o 
 
 ### Cite
 
+A extensão Cite auxilia o usuário na criação de referências e notas de rodapé.
 Instalação feita por baixando os arquivos da extensão e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension( 'Cite' );`
 
 ### VisualEditor
