@@ -34,7 +34,7 @@ Abaixo, tabela com os antigos plugins, cujas instalações foram necessárias na
 | [Quiz](https://www.mediawiki.org/wiki/Extension:Quiz)  | permite inserção de quiz na wiki                                 | -   | 1.2.0 (2013-08-13)          |
 
 
-## Kubernetes chart mediawiki e Problemas para mudança de idioma
+## Kubernetes Chart Mediawiki e Problemas para Mudança de Idioma
 
 A documentação relacionada a implementação da imagem em nosso kubernetes pode ser encontrada dentro do projeto servicos_kubernetes, com o nome de [mediawiki_att](https://github.com/ctic-sje-ifsc/servicos_kubernetes/tree/master/srv/mediawiki_att)
 
