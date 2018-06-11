@@ -89,6 +89,11 @@ Para resolver o problema, editamos o arquivo deployment.yaml de forma a mudar o 
 A extensão Cite auxilia o usuário na criação de referências e notas de rodapé.
 Instalação feita por baixando os arquivos da extensão e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension( 'Cite' );`
 
+### GoogleDocTag
+
+require_once "$IP/extensions/GoogleDocTag/GoogleDocTag.php";
+https://www.mediawiki.org/wiki/Extension:GoogleDocTag
+
 ### VisualEditor
 A extensão VisualEditor, que segue o formato WYSIWYG, facilita a edição de páginas da wiki por ser mais intuitiva. A implementação foi sugerida pelo professor M. Moecke 
 
