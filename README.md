@@ -106,7 +106,21 @@ Falhou ao verificar gramática (O executável <code>texvc</code> não foi encont
 ### ParserFunctions
 
 Adiciona funções úteis ao wikitexto relacionadas a logica e manipulação de strings.
-Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org/wiki/Extension:ParserFunctions) e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `https://www.mediawiki.org/wiki/Extension:ParserFunctions`
+Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org/wiki/Extension:ParserFunctions) e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension( 'ParserFunctions' );`
+
+### Quiz
+
+Permite adicionar quizes em uma página da wiki. 
+Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org/wiki/Extension:Quiz) e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension('Quiz' );`
+
+### SyntaxHighlight
+Adiciona suporte a realce de sintaxe na wiki.
+Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org/wiki/Extension:SyntaxHighlight#Installation) e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension( 'SyntaxHighlight_GeSHi' );
+
+
+`
+
+
 
 ### VisualEditor
 A extensão VisualEditor, que segue o formato WYSIWYG, facilita a edição de páginas da wiki por ser mais intuitiva. A implementação foi sugerida pelo professor M. Moecke 
