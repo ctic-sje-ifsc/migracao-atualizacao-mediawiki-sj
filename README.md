@@ -115,10 +115,9 @@ Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org
 
 ### SyntaxHighlight
 Adiciona suporte a realce de sintaxe na wiki.
-Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org/wiki/Extension:SyntaxHighlight#Installation) e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension( 'SyntaxHighlight_GeSHi' );
+Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org/wiki/Extension:SyntaxHighlight#Installation) e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension( 'SyntaxHighlight_GeSHi' );`
+Tendo problemas com o pygments
 
-
-`
 
 
 
