@@ -113,10 +113,11 @@ Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org
 Permite adicionar quizes em uma página da wiki. 
 Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org/wiki/Extension:Quiz) e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension('Quiz' );`
 
-### SyntaxHighlight
+### SyntaxHighlighter
+Depois de instalar praticamente todas as extensões do tipo Syntex Highlight oficiais (que podem ser encontradas para download no site da mediawiki) e ver que nenhuma delas funcionava na versão 1.30.0 da mediawiki que possuímos, a extensão SyntexHighter foi a que salvou. O problema das outras versões é desconhecido, nenhuma informação das páginas de discussões das extensões funcionou.      
 Adiciona suporte a realce de sintaxe na wiki.
-Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org/wiki/Extension:SyntaxHighlight#Installation) e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension( 'SyntaxHighlight_GeSHi' );`
-Tendo problemas com o pygments
+Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org/wiki/Extension:SyntaxHighlighter) e adicionando-os à pasta `/extensoes/SyntaxHighLighter` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `require_once "$IP/extensions/SyntaxHighlighter/SyntaxHighlighter.php";`
+
 
 
 
