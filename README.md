@@ -91,7 +91,7 @@ Instalação feita baixando os arquivos da extensão e adicionando-os à pasta `
 
 ### EmbedVideo
 
-A extensão EmbedVideo adiciona uma parser function necessária para inserir vídeos de diversas plataformas de compartilhamento de vídeo em uma página da wiki.
+A extensão EmbedVideo adiciona uma parser function necessária para inserir vídeos de diversas plataformas de compartilhamento de vídeo em uma página da wiki. Ele também adiciona suporte a arquivos mp3, mp4 entre outros, locais da mediawiki.
 Instalação feita baixando os arquivos da extensão e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension( 'EmbedVideo' );`
 
 ### GoogleDocTag
