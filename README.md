@@ -8,6 +8,14 @@ Nesse repositório é descrito o processo usado para migração do conteúdo da 
 A antiga wiki encontrava-se na versão 1.16.0 do software open source [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki).
 A migração do conteúdo foi feita para a versão mais recente (1.30.0).
 
+## Software instalado
+|Produto	|Versão|
+|---------|------|
+|MediaWiki|	1.30.0|
+|PHP	|7.0.30 (apache2handler)|
+|MariaDB	|10.1.23-MariaDB|
+|ICU	|52.1|
+
 
 
 ## Lista de Antigas Extensões
