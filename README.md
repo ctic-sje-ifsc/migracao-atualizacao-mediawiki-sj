@@ -128,6 +128,26 @@ Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org
 Basta fazer download da extensão [Widgets](https://www.mediawiki.org/wiki/Extension:Widgets). Ela criará um novo namespace na wiki. Para adicionar um widget, é preciso criar uma página dentro do namespace **Widget** com o nome do Widget que será usado. Por exemplo, o Widget Google Calendar:
 - Crie uma página chamada **Widget:Google_Calendar**. Nela é preciso colocar todo o código source do Widget na página recém criada. O código pode ser procurado (não estava muito acessível) na página https://www.mediawikiwidgets.org/w/index.php?title=Widget:Google_Calendar&action=edit.
 
+### LDAP Authentication Plugin
+Plugin de autenticação LDAP, com suporte para vários métodos de autenticação.
+Para instalar na wiki, basta baixar os arquivos da extensão (disponíveis na [página da extensão](https://www.mediawiki.org/wiki/Extension:LDAP_Authentication)), e depois adicionar as linhas a seguir ao arquivo LocalSettings.php:
+```
+require_once "$IP/extensions/LdapAuthentication/LdapAuthentication.php"; # adiciona extensao a wiki
+$wgAuth = new LdapAuthenticationPlugin(); # para autenticacao de senha
+$wgLDAPUseLocal = true; # permite usar tambem usuarios locais
+```
+Outras configurações podem ser consultadas no arquivo LocalSettings.php disponível neste mesmo repositório.
+
+### Lockdown
+Adiciona um modo de restringir acesso de namespaces específicos e páginas específicas a um grupo de usuários.
+Foi implementada na nossa wiki pelo professor E. Torresini.
+Para instalação basta baixar os arquivos da [página da extensão](https://www.mediawiki.org/wiki/Extension:Lockdown)
+e adicionar a linha a seguir no arquivo LocalSettings.php:
+```
+require_once "$IP/extensions/Lockdown/Lockdown.php";
+```
+Mais configurações usadas na nossa wiki podem ser vistas no arquivo LocalSettings.php disponível neste mesmo repositório.
+
 ### TinyMCE
 A extensão TinyMCE, que segue o formato WYSIWYG, facilita a edição de páginas da wiki por ser mais visual e intuitiva. A implementação de um editor WYSIWYG foi sugerida pelo professor M. Moecke.
 Foi primeiramente testada a extensão VisualEditor, mas vimos que ela possuía diversas dependências e teríamos que fazer uma nova imagem docker apenas para poder usá-la no nosso ambiente.
