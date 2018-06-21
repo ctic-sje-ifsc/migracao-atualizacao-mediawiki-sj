@@ -42,12 +42,10 @@ Abaixo, tabela com os antigos plugins, cujas instalações foram necessárias na
 | [Quiz](https://www.mediawiki.org/wiki/Extension:Quiz)  | permite inserção de quiz na wiki                                 | -   | 1.2.0 (2013-08-13)          |
 
 
-## Kubernetes Chart Mediawiki e Problemas para Mudança de Idioma
+## Kubernetes Charts Mediawiki e Problemas para Mudança de Idioma
 
-A documentação relacionada a implementação da imagem em nosso kubernetes pode ser encontrada dentro do projeto servicos_kubernetes, com o nome de [mediawiki_att](https://github.com/ctic-sje-ifsc/servicos_kubernetes/tree/master/srv/mediawiki_att)
-
+A documentação relacionada a implementação da imagem em nosso kubernetes pode ser encontrada dentro do projeto servicos_kubernetes, com o nome de [mediawiki_att](https://github.com/ctic-sje-ifsc/servicos_kubernetes/tree/master/srv/mediawiki_att).
 Ao editar o arquivo LocalSettings.php com intuito de mudar o idioma da mediwiki de "en" para "pt-br" na linha `$wgLanguageCode = "pt-br";`, o pod do kubernetes tornava-se inacessível e ficava reiniciando infinitamente. O motivo, como descobrimos, está atrelado ao trecho a seguir do arquivo [deployment.yaml](https://github.com/kubernetes/charts/blob/master/stable/mediawiki/templates/deployment.yaml):
-
 ```
         livenessProbe:
           httpGet:
@@ -62,9 +60,7 @@ Ao editar o arquivo LocalSettings.php com intuito de mudar o idioma da mediwiki 
         resources:
 
 ```
-
 O 'livenessProbe' citado acima é usado pelo kubelet para checar (a cada intervalo de tempo configurado) se o pod está funcionando corretamente, acessando a página descrita na linha `path: /index.php`. Ao mudar o idioma da mediawiki de inglês para português, a página /index.php passa a ser /index.php/Página_principal, fazendo com que o livenessProbre reiniciasse o pod por não conseguir acesso a página.
-
 Para resolver o problema, editamos o arquivo deployment.yaml de forma a mudar o path descrito no livenessProbe para um arquivo dentro da pasta images.
 
 ```
@@ -89,48 +85,70 @@ Para resolver o problema, editamos o arquivo deployment.yaml de forma a mudar o 
 ```
 
 ## Instalação de novas extensões na mediawiki 1.30
-
 É possível ver os testes de todas as extensões listadas abaixo na página [Testes de Extensões](https://cicd.sj.ifsc.edu.br/index.php/Testes_de_Extens%C3%B5es) da nova wiki.
 
 ### Cite
-
 A extensão Cite auxilia o usuário na criação de referências e notas de rodapé.
 Instalação feita baixando os arquivos da extensão e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension( 'Cite' );`
 
 ### EmbedVideo
-
-A extensão EmbedVideo adiciona uma parser function necessária para inserir vídeos de diversas plataformas de compartilhamento de vídeo em uma página da wiki. Ele também adiciona suporte a arquivos mp3, mp4 entre outros, locais da mediawiki.
+A extensão EmbedVideo adiciona uma parser function necessária para inserir vídeos de diversas plataformas de compartilhamento de vídeo em uma página da wiki. Ele também adiciona suporte a arquivos mp3, mp4 entre outros, locais da mediawiki.  
 Instalação feita baixando os arquivos da extensão e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension( 'EmbedVideo' );`
 
 ### GoogleDocTag
-
 A extensão GoogleDocTag insere um documento do Google Docs na página da wiki.
 Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org/wiki/Extension:GoogleDocTag) e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `require_once "$IP/extensions/GoogleDocTag/GoogleDocTag.php";`
 
 ### Math
+A extensão Math, dependendo da configuração, faz uso do utilitário Texvc para renderização das equações. Este utilitário, por sua vez, não vem instalado junto com a imagem mediawiki da Bitnami. Ao instalar a extensão, em vez de ela mostrar as equações, a wiki devolvia o erro abaixo:
+`Falhou ao verificar gramática (O executável <code>texvc</code> não foi encontrado. Consulte math/README para instruções da configuração.)`
+Para resolver o problema basta inserir as duas linhas abaixo no arquivo LocalSettings.php:
 
-Falhou ao verificar gramática (O executável <code>texvc</code> não foi encontrado. Consulte math/README para instruções da configuração.)
+```
+$wgMathFullRestbaseURL= 'https://en.wikipedia.org/api/rest_';
+$wgDefaultUserOptions['math'] = 'mathml';
+```
+Na primeira linha é apontado o endereço da API necessária pro funcionamento da extensão e na segunda é configurado o uso do Mathoid para renderização padrão das contas de usuário da wiki. O Mathoid utiliza MathJax para converter a entrada texvc no lado do servidor para renderização MathML + SVG. Nota-se que a renderização feita utilizando MathML não tem como resultado uma imagem PNG, diferente do Texvc se configurado para tal. (fonte:https://www.mediawiki.org/wiki/Extension:Math/pt-br)
 
 ### ParserFunctions
-
 Adiciona funções úteis ao wikitexto relacionadas a logica e manipulação de strings.
 Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org/wiki/Extension:ParserFunctions) e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension( 'ParserFunctions' );`
 
-### Quiz
 
+### Quiz
 Permite adicionar quizes em uma página da wiki.
 Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org/wiki/Extension:Quiz) e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension('Quiz' );`
 
 ### SyntaxHighlighter
-Depois de instalar praticamente todas as extensões do tipo Syntex Highlight oficiais (que podem ser encontradas para download no site da mediawiki) e ver que nenhuma delas funcionava na versão 1.30.0 da mediawiki que possuímos, a extensão SyntexHighter foi a que salvou. O problema das outras versões é desconhecido, nenhuma informação das páginas de discussões das extensões funcionou.      
 Adiciona suporte a realce de sintaxe na wiki.
+Depois de instalar praticamente todas as extensões do tipo Syntex Highlight oficiais (que podem ser encontradas para download no site da mediawiki) e ver que nenhuma delas funcionava na versão 1.30.0 da mediawiki que possuímos, a extensão SyntexHighter foi a que salvou. O problema das outras extensões é desconhecido, nenhuma informação das páginas de discussões das extensões funcionou.  
 Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org/wiki/Extension:SyntaxHighlighter) e adicionando-os à pasta `/extensoes/SyntaxHighLighter` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `require_once "$IP/extensions/SyntaxHighlighter/SyntaxHighlighter.php";`
 
 ### Widgets
-<br>Basta fazer download da extensão [Widgets](https://www.mediawiki.org/wiki/Extension:Widgets). Ela criará um novo namespace na wiki. Para adicionar um widget, é preciso criar uma página dentro do namespace **Widget** com o nome do Widget que será usado. </br>
-<br>Por exemplo, o Widget Google Calendar:</br>
-- Crie uma página chamada **Widget:Google_Calendar**. Nela é preciso colocar todo o código source do Widget na página recém criada. O código pode ser procurado (não estava muito acessível) na página https://www.mediawikiwidgets.org/w/index.php?title=Widget:Google_Calendar&action=edit
+Basta fazer download da extensão [Widgets](https://www.mediawiki.org/wiki/Extension:Widgets). Ela criará um novo namespace na wiki. Para adicionar um widget, é preciso criar uma página dentro do namespace **Widget** com o nome do Widget que será usado. Por exemplo, o Widget Google Calendar:
+- Crie uma página chamada **Widget:Google_Calendar**. Nela é preciso colocar todo o código source do Widget na página recém criada. O código pode ser procurado (não estava muito acessível) na página https://www.mediawikiwidgets.org/w/index.php?title=Widget:Google_Calendar&action=edit.
 
+### LDAP Authentication Plugin
+Plugin de autenticação LDAP, com suporte para vários métodos de autenticação.
+Para instalar na wiki, basta baixar os arquivos da extensão (disponíveis na [página da extensão](https://www.mediawiki.org/wiki/Extension:LDAP_Authentication)), e depois adicionar as linhas a seguir ao arquivo LocalSettings.php:
+```
+require_once "$IP/extensions/LdapAuthentication/LdapAuthentication.php"; # adiciona extensao a wiki
+$wgAuth = new LdapAuthenticationPlugin(); # para autenticacao de senha
+$wgLDAPUseLocal = true; # permite usar tambem usuarios locais
+```
+Outras configurações podem ser consultadas no arquivo LocalSettings.php disponível neste mesmo repositório.
 
-### VisualEditor
-A extensão VisualEditor, que segue o formato WYSIWYG, facilita a edição de páginas da wiki por ser mais intuitiva. A implementação foi sugerida pelo professor M. Moecke
+### Lockdown
+Adiciona um modo de restringir acesso de namespaces específicos e páginas específicas a um grupo de usuários.
+Foi implementada na nossa wiki pelo professor E. Torresini.
+Para instalação basta baixar os arquivos da [página da extensão](https://www.mediawiki.org/wiki/Extension:Lockdown)
+e adicionar a linha a seguir no arquivo LocalSettings.php:
+```
+require_once "$IP/extensions/Lockdown/Lockdown.php";
+```
+Mais configurações usadas na nossa wiki podem ser vistas no arquivo LocalSettings.php disponível neste mesmo repositório.
+
+### TinyMCE
+A extensão TinyMCE, que segue o formato WYSIWYG, facilita a edição de páginas da wiki por ser mais visual e intuitiva. A implementação de um editor WYSIWYG foi sugerida pelo professor M. Moecke.  
+Foi primeiramente testada a extensão VisualEditor, mas vimos que ela possuía diversas dependências e teríamos que fazer uma nova imagem docker apenas para poder usá-la no nosso ambiente.
+A extensão TinyMCE não requer nenhum serviço ou biblioteca para funcionar. Para instalar basta baixar os arquivos da extensão (link disponível na [página da extensão](https://www.mediawiki.org/wiki/Extension:TinyMCE)) e adicionar a linha `wfLoadExtension( 'TinyMCE' );` ao arquivo LocalSettings.php.
