@@ -45,9 +45,7 @@ Abaixo, tabela com os antigos plugins, cujas instalações foram necessárias na
 ## Kubernetes Charts Mediawiki e Problemas para Mudança de Idioma
 
 A documentação relacionada a implementação da imagem em nosso kubernetes pode ser encontrada dentro do projeto servicos_kubernetes, com o nome de [mediawiki_att](https://github.com/ctic-sje-ifsc/servicos_kubernetes/tree/master/srv/mediawiki_att).
-
 Ao editar o arquivo LocalSettings.php com intuito de mudar o idioma da mediwiki de "en" para "pt-br" na linha `$wgLanguageCode = "pt-br";`, o pod do kubernetes tornava-se inacessível e ficava reiniciando infinitamente. O motivo, como descobrimos, está atrelado ao trecho a seguir do arquivo [deployment.yaml](https://github.com/kubernetes/charts/blob/master/stable/mediawiki/templates/deployment.yaml):
-
 ```
         livenessProbe:
           httpGet:
@@ -62,9 +60,7 @@ Ao editar o arquivo LocalSettings.php com intuito de mudar o idioma da mediwiki 
         resources:
 
 ```
-
 O 'livenessProbe' citado acima é usado pelo kubelet para checar (a cada intervalo de tempo configurado) se o pod está funcionando corretamente, acessando a página descrita na linha `path: /index.php`. Ao mudar o idioma da mediawiki de inglês para português, a página /index.php passa a ser /index.php/Página_principal, fazendo com que o livenessProbre reiniciasse o pod por não conseguir acesso a página.
-
 Para resolver o problema, editamos o arquivo deployment.yaml de forma a mudar o path descrito no livenessProbe para um arquivo dentro da pasta images.
 
 ```
@@ -89,16 +85,13 @@ Para resolver o problema, editamos o arquivo deployment.yaml de forma a mudar o 
 ```
 
 ## Instalação de novas extensões na mediawiki 1.30
-
 É possível ver os testes de todas as extensões listadas abaixo na página [Testes de Extensões](https://cicd.sj.ifsc.edu.br/index.php/Testes_de_Extens%C3%B5es) da nova wiki.
 
 ### Cite
-
 A extensão Cite auxilia o usuário na criação de referências e notas de rodapé.
 Instalação feita baixando os arquivos da extensão e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension( 'Cite' );`
 
 ### EmbedVideo
-
 <p>A extensão EmbedVideo adiciona uma parser function necessária para inserir vídeos de diversas plataformas de compartilhamento de vídeo em uma página da wiki. Ele também adiciona suporte a arquivos mp3, mp4 entre outros, locais da mediawiki.</p>
 Instalação feita baixando os arquivos da extensão e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension( 'EmbedVideo' );`
 
