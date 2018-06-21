@@ -92,7 +92,7 @@ A extensão Cite auxilia o usuário na criação de referências e notas de roda
 Instalação feita baixando os arquivos da extensão e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension( 'Cite' );`
 
 ### EmbedVideo
-A extensão EmbedVideo adiciona uma parser function necessária para inserir vídeos de diversas plataformas de compartilhamento de vídeo em uma página da wiki. Ele também adiciona suporte a arquivos mp3, mp4 entre outros, locais da mediawiki.
+A extensão EmbedVideo adiciona uma parser function necessária para inserir vídeos de diversas plataformas de compartilhamento de vídeo em uma página da wiki. Ele também adiciona suporte a arquivos mp3, mp4 entre outros, locais da mediawiki.  
 Instalação feita baixando os arquivos da extensão e adicionando-os à pasta `/extensoes` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `wfLoadExtension( 'EmbedVideo' );`
 
 ### GoogleDocTag
@@ -121,7 +121,7 @@ Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org
 
 ### SyntaxHighlighter
 Adiciona suporte a realce de sintaxe na wiki.
-Depois de instalar praticamente todas as extensões do tipo Syntex Highlight oficiais (que podem ser encontradas para download no site da mediawiki) e ver que nenhuma delas funcionava na versão 1.30.0 da mediawiki que possuímos, a extensão SyntexHighter foi a que salvou. O problema das outras versões é desconhecido, nenhuma informação das páginas de discussões das extensões funcionou.   
+Depois de instalar praticamente todas as extensões do tipo Syntex Highlight oficiais (que podem ser encontradas para download no site da mediawiki) e ver que nenhuma delas funcionava na versão 1.30.0 da mediawiki que possuímos, a extensão SyntexHighter foi a que salvou. O problema das outras extensões é desconhecido, nenhuma informação das páginas de discussões das extensões funcionou.  
 Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org/wiki/Extension:SyntaxHighlighter) e adicionando-os à pasta `/extensoes/SyntaxHighLighter` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `require_once "$IP/extensions/SyntaxHighlighter/SyntaxHighlighter.php";`
 
 ### Widgets
@@ -149,6 +149,6 @@ require_once "$IP/extensions/Lockdown/Lockdown.php";
 Mais configurações usadas na nossa wiki podem ser vistas no arquivo LocalSettings.php disponível neste mesmo repositório.
 
 ### TinyMCE
-A extensão TinyMCE, que segue o formato WYSIWYG, facilita a edição de páginas da wiki por ser mais visual e intuitiva. A implementação de um editor WYSIWYG foi sugerida pelo professor M. Moecke.
+A extensão TinyMCE, que segue o formato WYSIWYG, facilita a edição de páginas da wiki por ser mais visual e intuitiva. A implementação de um editor WYSIWYG foi sugerida pelo professor M. Moecke.  
 Foi primeiramente testada a extensão VisualEditor, mas vimos que ela possuía diversas dependências e teríamos que fazer uma nova imagem docker apenas para poder usá-la no nosso ambiente.
 A extensão TinyMCE não requer nenhum serviço ou biblioteca para funcionar. Para instalar basta baixar os arquivos da extensão (link disponível na [página da extensão](https://www.mediawiki.org/wiki/Extension:TinyMCE)) e adicionar a linha `wfLoadExtension( 'TinyMCE' );` ao arquivo LocalSettings.php.
