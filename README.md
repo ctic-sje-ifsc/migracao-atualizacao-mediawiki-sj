@@ -6,16 +6,15 @@ Nesse repositório é descrito o processo usado para migração do conteúdo da 
 
 
 A antiga wiki encontrava-se na versão 1.16.0 do software open source [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki).
-A migração do conteúdo foi feita para a versão mais recente (1.30.0).
+A migração do conteúdo foi feita para a versão LTS mais recente (1.31.x).
 
 ## Software instalado
 |Produto	|Versão|
 |---------|------|
-|MediaWiki|	1.30.0|
-|PHP	|7.0.30 (apache2handler)|
-|MariaDB	|10.1.23-MariaDB|
-|ICU	|52.1|
-
+|MediaWiki|	1.31.1|
+|PHP	|7.1.26 (apache2handler)|
+|MariaDB	|10.1.36-MariaDB|
+|ICU	|57.1|
 
 
 ## Lista de Antigas Extensões
@@ -84,7 +83,7 @@ Para resolver o problema, editamos o arquivo deployment.yaml de forma a mudar o 
               },
 ```
 
-## Instalação de novas extensões na mediawiki 1.30
+## Instalação de novas extensões na mediawiki 1.31
 É possível ver os testes de todas as extensões listadas abaixo na página [Testes de Extensões](https://cicd.sj.ifsc.edu.br/index.php/Testes_de_Extens%C3%B5es) da nova wiki.
 
 ### Cite
@@ -121,7 +120,7 @@ Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org
 
 ### SyntaxHighlighter
 Adiciona suporte a realce de sintaxe na wiki.
-Depois de instalar praticamente todas as extensões do tipo Syntex Highlight oficiais (que podem ser encontradas para download no site da mediawiki) e ver que nenhuma delas funcionava na versão 1.30.0 da mediawiki que possuímos, a extensão SyntexHighter foi a que salvou. O problema das outras extensões é desconhecido, nenhuma informação das páginas de discussões das extensões funcionou.  
+Depois de instalar praticamente todas as extensões do tipo Syntex Highlight oficiais (que podem ser encontradas para download no site da mediawiki) e ver que nenhuma delas funcionava na versão 1.31.x da mediawiki que possuímos, a extensão SyntexHighter foi a que salvou. O problema das outras extensões é desconhecido, nenhuma informação das páginas de discussões das extensões funcionou.  
 Instalação feita baixando os [arquivos da extensão](https://www.mediawiki.org/wiki/Extension:SyntaxHighlighter) e adicionando-os à pasta `/extensoes/SyntaxHighLighter` do diretório raiz da instalação do mediawiki. No arquivo LocalSettings.php é adicionado a linha `require_once "$IP/extensions/SyntaxHighlighter/SyntaxHighlighter.php";`
 
 ### Widgets
